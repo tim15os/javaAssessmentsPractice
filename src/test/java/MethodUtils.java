@@ -40,6 +40,29 @@ public class MethodUtils {
     }
 
 
+    public static int palindromeCount(int number1, int number2){
+        int count=0;
+        for(int i=number1;i<=number2;i++) {
+            int reversed = 0;
+            int nums = i; // make this i
+            if (nums < 0) {
+                nums = nums * (-1);
+            }
+            while (nums > 0) {
+                reversed = reversed * 10 + nums % 10;
+                nums /= 10;
+            }
+            if (i < 0) { // make it i
+                reversed = reversed * (-1);
+            }
+            if(i==reversed){ // make it i
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 
     public static String addMinutes(String timeWithString, int time) {
         // For example, AddMinutes("9:10 AM", 200) would return"12:30 PM".
