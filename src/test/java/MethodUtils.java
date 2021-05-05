@@ -501,6 +501,27 @@ public class MethodUtils {
         return result;
     }
 
+    public static int subOfTheSumArray(int[] arr, int target){ // 1,3,5,9,10,15,8  13
+        int a = 0;
+        int b = 0;
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0; i<arr.length; i++){
+            int diff = target - arr[i];
+            if(!map.containsKey(diff)){
+                map.put(arr[i],i);
+            } else {
+                a = map.get(diff);
+                b = i;
+                break;
+            }
+        }
+        int res = 0;
+        for(int i = a; i <= b; i++){
+            res = res + arr[i];
+        }
+        return res;
+    }
+
 
 
 
