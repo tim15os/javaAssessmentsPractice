@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MethodUtils {
 
@@ -108,6 +109,21 @@ public class MethodUtils {
         }
         if (origin == reversed) return reversed;
          else return -1;
+    }
+
+    public static List<String> palindromeStringWithStreamFilter1(List<String> list) {
+        List<String> res = new ArrayList<>();
+        list.forEach(a->{
+            if(a.equals(new StringBuilder(a).reverse().toString())){
+                res.add(a);
+            }
+        });
+        return res;
+    }
+
+
+    public static List<String> palindromeStringWithStreamFilter2(List<String> list) {
+        return list.stream().filter(a->a.equals(new StringBuilder(a).reverse().toString())).collect(Collectors.toList());
     }
 
 

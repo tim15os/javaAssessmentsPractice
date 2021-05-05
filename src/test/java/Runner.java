@@ -52,10 +52,33 @@ public class Runner {
         unsortedMap.put("c", 3);
         unsortedMap.put("d", 1);
         System.out.println(unsortedMap);
-        //int[]testArray={1,3,5,9,10,15,8};
-        //System.out.println(subOfTheSumArray(testArray,13));
+        int[]testArray={1,3,5,9,10,15,8};
+        System.out.println(subOfTheSumArray(testArray,13));
+        System.out.println(MethodUtils.palindromeStringWithStreamFilter1(Arrays.asList("madam","red","civic","war","sos")));
+        System.out.println(MethodUtils.palindromeStringWithStreamFilter2(Arrays.asList("madam","red","civic","war","sos")));
 
 
+    }
+
+    public static int subOfTheSumArray(int[] arr, int target){ // 1,3,5,9,10,15,8  13
+        int a = 0;
+        int b = 0;
+        Map<Integer,Integer> map = new HashMap<>();
+        for(int i=0; i<arr.length; i++){
+            int diff = target - arr[i];
+            if(!map.containsKey(diff)){
+                map.put(arr[i],i);
+            } else {
+                a = map.get(diff);
+                b = i;
+                break;
+            }
+        }
+        int res = 0;
+        for(int i = a; i <= b; i++){
+            res = res + arr[i];
+        }
+        return res;
     }
 
 
