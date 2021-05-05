@@ -40,6 +40,29 @@ public class MethodUtils {
     }
 
 
+    public static int palindromeCount(int number1, int number2){
+        int count=0;
+        for(int i=number1;i<=number2;i++) {
+            int reversed = 0;
+            int nums = i; // make this i
+            if (nums < 0) {
+                nums = nums * (-1);
+            }
+            while (nums > 0) {
+                reversed = reversed * 10 + nums % 10;
+                nums /= 10;
+            }
+            if (i < 0) { // make it i
+                reversed = reversed * (-1);
+            }
+            if(i==reversed){ // make it i
+                count++;
+            }
+        }
+        return count;
+    }
+
+
 
     public static String addMinutes(String timeWithString, int time) {
         // For example, AddMinutes("9:10 AM", 200) would return"12:30 PM".
@@ -501,6 +524,8 @@ public class MethodUtils {
         return result;
     }
 
+
+
     public static int subOfTheSumArray(int[] arr, int target){ // 1,3,5,9,10,15,8  13
         int a = 0;
         int b = 0;
@@ -527,8 +552,8 @@ public class MethodUtils {
 
 
     public static int[] combineTwoArraysAndSort(int [] firstIntArray, int [] secondIntArray) {
-        //int [] firstIntArray = {3,1,5,0,7};
-        //int [] secondIntArray = {10,0,-1,10};
+        // int [] firstIntArray = {3,1,5,0,7};
+        // int [] secondIntArray = {10,0,-1,10};
         int [] combinedIntArray = new int[firstIntArray.length+secondIntArray.length];
 
         int count = 0;

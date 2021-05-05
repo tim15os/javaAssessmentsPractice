@@ -52,6 +52,8 @@ public class Runner {
         unsortedMap.put("c", 3);
         unsortedMap.put("d", 1);
         System.out.println(unsortedMap);
+        //int[]testArray={1,3,5,9,10,15,8};
+        //System.out.println(subOfTheSumArray(testArray,13));
 
 
     }
