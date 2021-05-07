@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 
-public class TestDemoIntrface {
+public class TestDemoInterface {
 
     public static void main(String[] args) {
         List<Car> carList = createCarList();
