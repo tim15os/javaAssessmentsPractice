@@ -535,6 +535,17 @@ public class MethodUtils {
     }
 
 
+    public static String convertToUpperCase(String str) {
+        str = str.trim().substring(0, 1).toLowerCase().concat(str.substring(1));
+        for (int i = 0; i < str.length(); i++) {
+            if (str.substring(i, i + 1).equals(" ")) {
+                str = str.substring(i + 1, i + 2).toUpperCase().concat(str.substring(2));
+            }
+        }
+        return str;
+    }
+
+
 
     public static int[] twoSumWithList(int[] numArray, int target) {
         int[] result = new int[2];
@@ -553,7 +564,8 @@ public class MethodUtils {
 
 
 
-    public static int subOfTheSumArray(int[] arr, int target){ // 1,3,5,9,10,15,8  13
+    public static int subArrayOfTheSumArray(int[] arr, int target){ // 1,3,5,9,10,15,8  13
+        if(arr.length == 0) return 0;
         int a = 0;
         int b = 0;
         Map<Integer,Integer> map = new HashMap<>();
@@ -637,6 +649,38 @@ public class MethodUtils {
             }
         }
         return result;
+    }
+
+    public static String weirdOrNot(int n) {
+        /*
+        if given number is odd print out weird
+        if given number is even and in a range between 2 and 5 inclusive print out  - not weird
+        if given number is even and in range between 6 and 20 inclusive print out  - weird
+        if number is even and larger then 20 print out weird (Even == Chetnie)
+        */
+        String weird = "";
+
+        if (n % 2 != 0) weird = "weird";
+        else if (n >= 2 && n <= 5) weird = "not weird";
+        else if (n >= 6 && n <= 20) weird = "weird";
+        else if (n == 0) weird = "weird";
+        else if (n > 20) weird = "weird";
+        return weird;
+    }
+
+
+    public static int yerkenazTask(int x) {
+        /*
+        A: What inputs would you use to test this function? : -10 -> -10, 0 -> 0, 5 -> 6, 10 -> 11, 20 -> 21, 21 -> 210, 25 -> 50
+        B: When would the “Return x*10” case be reached, if at all? -> x*10 will be executed only in case if x=21;
+        C: What can break this function? Any number within int range <-2147483648 && >2147483648
+          -> This function will work as expected from range -2147483648 <= x => 1073741823. Any number bigger
+               than 1073741823 (2147483648/2-1) or smaller than -2147483648 will break the function.
+         */
+        if (x < 5) return x;
+        if (x <= 20) return x + 1;
+        if (x > 21) return x * 2;
+        return x * 10;
     }
 
 
