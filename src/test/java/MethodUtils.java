@@ -387,7 +387,7 @@ public class MethodUtils {
     }
 
 
-    public static String camelCase2(String str)  {
+    public static String camelCase2(String str) {
         String temp = "";
         str=str.toLowerCase();
         for(int i=0;i<str.length();i++){
@@ -399,6 +399,12 @@ public class MethodUtils {
             }
         }
         return temp;
+    }
+
+
+    public static Set<Integer> findUniqueDuplicates(List<Integer> list) {
+        Set<Integer> set = new HashSet<>();
+        return list.stream().filter(a->!set.add(a)).collect(Collectors.toSet());
     }
 
 
