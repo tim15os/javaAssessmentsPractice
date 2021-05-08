@@ -22,6 +22,7 @@ public class Runner extends MethodUtils{
         System.out.println(palindromeStringWithStreamFilter1(Arrays.asList("madam","red","civic","war","sos")));
         System.out.println(palindromeStringWithStreamFilter2(Arrays.asList("madam","red","civic","war","sos")));
         System.out.println(findUniqueDuplicates(list));
+        System.out.println(findAllDuplicates(list));
 
 
     }

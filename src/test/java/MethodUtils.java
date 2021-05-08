@@ -401,12 +401,16 @@ public class MethodUtils {
         return temp;
     }
 
-
     public static Set<Integer> findUniqueDuplicates(List<Integer> list) {
         Set<Integer> set = new HashSet<>();
         return list.stream().filter(a->!set.add(a)).collect(Collectors.toSet());
     }
 
+
+    public static List<Integer> findAllDuplicates(List<Integer> list) {
+        Set<Integer> set = new HashSet<>();
+        return list.stream().filter(a->!set.add(a)).collect(Collectors.toList());
+    }
 
 
 
