@@ -143,8 +143,14 @@ public class MethodUtils {
         else return false;
     }
 
-
-
+    static int[] reverseIntArray ( int[] arrayNum){
+        int reverseArray[] = new int[arrayNum.length];
+        if(arrayNum.length==0 || arrayNum.length==1) return arrayNum;
+        for (int i = arrayNum.length-1, k=0; i >=0; i--,k++) {
+            arrayNum[i] = reverseArray[k];
+        }
+        return reverseArray;
+    }
 
     public static int reverseNum(int num) {
         int reversed = 0;
@@ -385,6 +391,7 @@ public class MethodUtils {
         }
         return result;
     }
+
 
 
     public static String camelCase2(String str) {

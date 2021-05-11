@@ -1,4 +1,4 @@
-package ZT.SS5;
+package ZT.SS1_10;
 
 public class Human {
     String name;
@@ -17,6 +17,13 @@ class HumanTest{
         h.car = new Car("White", "V6");
         h.bA = new BankAccount(101, 54000.99);
         h.info();
+        h.bA.addMoney(0.01);
+        System.out.println(h.bA.getBalance());
+        h.bA.withdrawMoney(54001);
+        System.out.println(h.bA.getBalance());
+        h.bA.withdrawMoney(1);
+        System.out.println(h.bA.getBalance());
+
     }
 }
 
@@ -37,5 +44,23 @@ class BankAccount{
     }
     int id;
     double balance;
+
+    double withdrawMoney(double amount){
+        if (balance==0) return 0.0;
+        if (balance<amount) return 0.0;
+        else balance-=amount;
+        return balance;
+    }
+
+    double addMoney(double amount){
+        balance+=amount;
+        return balance;
+    }
+
+    double getBalance(){
+        return balance;
+    }
+
+
 }
 
