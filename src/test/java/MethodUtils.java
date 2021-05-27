@@ -448,6 +448,8 @@ public class MethodUtils {
 
 
     public static int secondLargestNumber(int[] arr){
+        if(arr.length==0) return -1;
+        if(arr.length==1) return arr[0];
         for(int i=0;i<arr.length;i++){
             boolean switched = false;
             for(int b=0;b<arr.length-1;b++){
