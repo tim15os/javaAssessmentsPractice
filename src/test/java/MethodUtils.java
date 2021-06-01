@@ -479,10 +479,6 @@ public class MethodUtils {
 
 
 
-
-
-
-
     public static int priceCheck(List<String> products, List<Float> productPrice, List<String> productSold, List<Float> soldPrice) {
         HashMap<String, Float> priceList = new HashMap<>();
         for(int i=0; i<products.size(); i++) {
