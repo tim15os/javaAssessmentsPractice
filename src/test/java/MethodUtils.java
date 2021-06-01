@@ -842,6 +842,38 @@ public class MethodUtils {
 
 
 
+    public static String countLettersInStringAEIOU(String string){
+        int maxNumber=0;
+        Map<Character, Integer> map = new HashMap<>();
+        for(int i=0;i<string.length();i++){ // vowel
+            if(string.charAt(i)=='a' || string.charAt(i)=='e'||
+                    string.charAt(i)=='o' || string.charAt(i)=='i'||
+                    string.charAt(i)=='u'){
+                if(map.containsKey(string.charAt(i))){
+                    map.put(string.charAt(i),map.get(string.charAt(i))+1);
+                }else{
+                    map.put(string.charAt(i),1);
+                }
+            }
+        }
+        for(Character c:map.keySet()){
+            if(map.get(c)>maxNumber) maxNumber=map.get(c);
+        }
+        int finalMaxNumber = maxNumber;
+        List<Character> list = map.keySet().stream().sorted().filter(a->map.get(a)==finalMaxNumber).collect(Collectors.toList());
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < list.size(); i++) {
+            if(maxNumber>1){
+                sb.append(list.get(i)).append(" appears ").append(maxNumber).append(" times"+"\n");
+            }else{
+                sb.append(list.get(i)).append(" appears ").append(maxNumber).append(" time"+"\n");
+            }
+        }
+        return sb.toString().trim();
+    }
+
+
+
 
 
 
