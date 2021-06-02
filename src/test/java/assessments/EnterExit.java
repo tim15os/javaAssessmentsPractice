@@ -1,6 +1,5 @@
-package Assessments;
+package assessments;
 
-import java.io.*;
 import java.util.*;
 
 public class EnterExit {

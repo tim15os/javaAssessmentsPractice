@@ -1,6 +1,4 @@
-package Assessments;
-
-import java.util.Scanner;
+package assessments;
 
 public class StringPractice {
 
