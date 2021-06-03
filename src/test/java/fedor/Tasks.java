@@ -1,9 +1,6 @@
 package fedor;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Tasks {
@@ -30,10 +27,77 @@ public class Tasks {
 
     }
 
+    public static Map<String,List<Integer>> findFibonacciNumbersFormGivenMap(Map<String,List<Integer>> mapOfNumbers,List<Integer> listOfFibonacciNumbers){
+
+        return mapOfNumbers.entrySet().stream()
+                .filter(a->a.getValue().retainAll(listOfFibonacciNumbers))
+                .collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
+
+    }
+
+    public static List<Integer> listOfTripleNumbers(){
+        List<Integer> list = new ArrayList<>();
+        int i=100;
+        while (i<1000){
+            list.add(i);
+            i++;
+        }
+        return list;
+    }
+
+    public static List<Integer> listOfDoubleNumbers(){
+        List<Integer> list = new ArrayList<>();
+        int i=10;
+        while (i<100){
+            list.add(i);
+            i++;
+        }
+        return list;
+    }
+
+    public static List<Integer> listOfSingleNumbers(){
+        List<Integer> list = new ArrayList<>();
+        int i=0;
+        while (i<10){
+            list.add(i);
+            i++;
+        }
+        return list;
+    }
+
+    public static List<Integer> getListOfFibonacciNumbers(int maxLimit){
+
+        List<Integer> listOfFibonacciNum  = new ArrayList<>();
+        int nunOne = 0;
+        int numTwo = 1;
+        for(int i=0;i<maxLimit;i++){
+            if(nunOne<maxLimit){
+                listOfFibonacciNum.add(nunOne);
+                int numThree = nunOne+numTwo;
+                nunOne = numTwo;
+                numTwo = numThree;
+            }else {
+                break;
+            }
+        }
+        return listOfFibonacciNum;
+    }
+
+
+
     public static void main(String[] args) {
 
+        Map<String,List<Integer>> map = new HashMap<>();
+        map.put("SingleNumber",listOfSingleNumbers());
+        map.put("DoubleNumbers",listOfDoubleNumbers());
+        map.put("TripleNumbers",listOfTripleNumbers());
+
+        System.out.println(findFibonacciNumbersFormGivenMap(map,getListOfFibonacciNumbers(1000)));
+
         String word = "voooweeel";
-        printLetterThatAppearsMaxTime(word);
+
+
+
 
     }
 }
