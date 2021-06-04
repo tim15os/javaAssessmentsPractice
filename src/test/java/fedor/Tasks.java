@@ -84,6 +84,11 @@ public class Tasks {
     }
 
 
+    public static String makeWordUpperCase(String word){
+        return Arrays.stream(word.split(" ")).map(a->a.substring(0,1).toUpperCase()+a.substring(1))
+                .collect(Collectors.joining(" "));
+    }
+
 
     public static void main(String[] args) {
 
@@ -92,9 +97,13 @@ public class Tasks {
         map.put("DoubleNumbers",listOfDoubleNumbers());
         map.put("TripleNumbers",listOfTripleNumbers());
 
+        System.out.println(makeWordUpperCase("i love java"));
+
         System.out.println(findFibonacciNumbersFormGivenMap(map,getListOfFibonacciNumbers(1000)));
 
         String word = "voooweeel";
+
+
 
 
 
