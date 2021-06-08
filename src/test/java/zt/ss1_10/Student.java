@@ -1,4 +1,4 @@
-package ZT.SS1_10;
+package zt.ss1_10;
 
 public class Student {
 

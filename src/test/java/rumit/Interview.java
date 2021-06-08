@@ -1,3 +1,5 @@
+package rumit;
+
 import java.util.Scanner;
 
 public class Interview {

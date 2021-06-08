@@ -1,3 +1,5 @@
+package rumit;
+
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
