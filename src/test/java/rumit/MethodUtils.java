@@ -858,6 +858,24 @@ public class MethodUtils {
         return map;
     }
 
+    public static Map<String, Integer> countWordsInList(List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            Integer count = 1;
+            if (!map.containsKey(list.get(i))) {
+                for (int j = i + 1; j < list.size(); j++) {
+                    if (list.get(i).equalsIgnoreCase(list.get(j))) {
+                        count++;
+                    }
+                }
+            } else {
+                continue;
+            }
+            map.put(list.get(i), count);
+        }
+        return map;
+    }
+
 
 
 
