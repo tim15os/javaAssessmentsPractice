@@ -1,4 +1,4 @@
-package assessments;
+package rumit.assessments;
 
 import java.util.ArrayList;
 import java.util.Arrays;

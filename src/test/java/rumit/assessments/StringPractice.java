@@ -1,4 +1,4 @@
-package assessments;
+package rumit.assessments;
 
 public class StringPractice {
 
