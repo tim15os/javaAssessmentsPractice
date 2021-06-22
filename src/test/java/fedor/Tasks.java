@@ -89,8 +89,24 @@ public class Tasks {
                 .collect(Collectors.joining(" "));
     }
 
+    public static char firstCharacter(String str){
+        Map<Character,Integer> map  = new LinkedHashMap<>();
+
+        for(char ch:str.toCharArray()){
+            if(map.containsKey(ch)){
+                map.put(ch,map.get(ch)+1);
+            }else {
+                map.put(ch,1);
+            }
+        }
+
+       return map.keySet().stream().filter(a->map.get(a)==1).findFirst().orElse(null);
+    }
+
 
     public static void main(String[] args) {
+
+        System.out.println(firstCharacter("wwertte"));
 
         Map<String,List<Integer>> map = new HashMap<>();
         map.put("SingleNumber",listOfSingleNumbers());
@@ -102,11 +118,6 @@ public class Tasks {
         System.out.println(findFibonacciNumbersFormGivenMap(map,getListOfFibonacciNumbers(1000)));
 
         String word = "voooweeel";
-
-
-
-
-
 
     }
 }
