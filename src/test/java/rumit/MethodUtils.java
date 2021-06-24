@@ -818,6 +818,46 @@ public class MethodUtils {
     }
 
 
+    static boolean areBracketsBalanced(String expr) {
+        // Using ArrayDeque is faster than using Stack class
+        Stack<Character> stack = new Stack<>();
+        // Traversing the Expression
+        for (int i = 0; i < expr.length(); i++){
+            char x = expr.charAt(i);
+            if (x == '(' || x == '[' || x == '{'){
+                // Push the element in the stack
+                stack.push(x);
+                continue;
+            }
+            // If current character is not opening
+            // bracket, then it must be closing. So stack
+            // cannot be empty at this point.
+            if (stack.isEmpty())
+                return false;
+            char check;
+            switch (x) {
+                case ')':
+                    check = stack.pop();
+                    if (check == '{' || check == '[')
+                        return false;
+                    break;
+
+                case '}':
+                    check = stack.pop();
+                    if (check == '(' || check == '[')
+                        return false;
+                    break;
+
+                case ']':
+                    check = stack.pop();
+                    if (check == '(' || check == '{')
+                        return false;
+                    break;
+            }
+        }
+        // Check Empty Stack
+        return (stack.isEmpty());
+    }
 
 
 
@@ -854,6 +894,24 @@ public class MethodUtils {
                 continue;
             }
             map.put(stringArray[i], count);
+        }
+        return map;
+    }
+
+    public static Map<String, Integer> countWordsInList(List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            Integer count = 1;
+            if (!map.containsKey(list.get(i))) {
+                for (int j = i + 1; j < list.size(); j++) {
+                    if (list.get(i).equalsIgnoreCase(list.get(j))) {
+                        count++;
+                    }
+                }
+            } else {
+                continue;
+            }
+            map.put(list.get(i), count);
         }
         return map;
     }
