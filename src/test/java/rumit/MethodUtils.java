@@ -579,6 +579,28 @@ public class MethodUtils {
         return str;
     }
 
+    public static String firstUniqueChar(String s) {
+        HashMap<Character, Integer> count = new HashMap<>();
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            count.put(c, count.getOrDefault(c, 0) + 1);
+        }
+        for (int i = 0; i < n; i++) {
+            if (count.get(s.charAt(i)) == 1){
+                return  ""+s.charAt(i);
+            }
+        }
+        return "";
+    }
+
+
+    public static boolean compareTwoArrays(Integer[] a, Integer[] b) {
+        if(a.length == 0 || b.length == 0) return false;
+        if(a.length == 0 && b.length == 0) return false;
+        return Arrays.asList(a).containsAll(Arrays.asList(b));
+    }
+
 
 
     public static int[] twoSumWithList(int[] numArray, int target) {
