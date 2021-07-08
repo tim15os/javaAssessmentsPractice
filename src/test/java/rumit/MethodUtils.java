@@ -568,6 +568,41 @@ public class MethodUtils {
         return index;
     }
 
+    public static String firstUniqueCharacterInTheString(String s) {
+        HashMap<Character, Integer> count = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            count.put(c, count.getOrDefault(c, 0) + 1);
+        }
+        for (int i = 0; i < s.length(); i++) {
+            if (count.get(s.charAt(i)) == 1){
+                return ""+s.charAt(i);
+            }
+        }
+        return "";
+    }
+
+    public static boolean subInTheNumber(int firstNumber, int target) {
+        // === First approach with the Loop ===
+        String stringHelper = Integer.toString(firstNumber);
+        int[] arrayOfFirstNumbers = new int[stringHelper.length()];
+        for (int i = 0; i < stringHelper.length(); i++) {
+            arrayOfFirstNumbers[i] = stringHelper.charAt(i) - '0';
+        } // === *** ===
+        // === First approach with the Stream ===
+         int[] arrayOfFirstNumbers2 = Integer.toString(firstNumber).chars().map(c -> c - '0').toArray();
+        // === *** ===
+        for (int i = 0; i < arrayOfFirstNumbers.length; i++) {
+            if (arrayOfFirstNumbers[i] == target) return true;
+        }
+        return false;
+    }
+
+    public static boolean subInTheNumber2(int wholeNum, int target){
+        String[] arrOfStrings = String.valueOf(wholeNum).split("");
+        String temperString = String.valueOf(target);
+        return Arrays.asList(arrOfStrings).contains(temperString);
+    }
 
     public static String convertToUpperCase(String str) {
         str = str.trim().substring(0, 1).toLowerCase().concat(str.substring(1));
@@ -998,6 +1033,33 @@ public class MethodUtils {
         } while (strArr.length > 1);
     }
 
+    public static int getUniqueCharacter1(String s){
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for(int i=0;i<s.length();i++){
+            char key = s.charAt(i);
+            map.put(key, map.containsKey(key)?-1:i);
+        }
+        for (Map.Entry<Character, Integer> m : map.entrySet()){
+            if(m.getValue()!=-1){
+                return m.getValue()+1;
+            }
+        }
+        return -1;
+    }
+
+    public static int getUniqueCharacter2(String s){
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for(int i=0;i<s.length();i++){
+            if(map.containsKey(s.charAt(i))){
+                map.put(s.charAt(i),-1);
+            }else{
+                map.put(s.charAt(i),i);
+            }
+        }
+        System.out.println(map);
+        return map.entrySet().stream().filter(a->a.getValue()!=-1).findFirst().get().getValue();
+    }
+
 
     public static Map<Character, Integer> letterCountWithStreams(String string) {
         Map<Character, Integer> result = new HashMap<>();
@@ -1256,6 +1318,27 @@ public class MethodUtils {
             return 0;
         }
         return (n%10)+sumDigits(n/10);
+    }
+
+
+    static boolean isSubset(int arr1[],int arr2[],int m, int n){
+        int i = 0;
+        int j = 0;
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < m; j++)
+                if (arr2[i] == arr1[j])
+                    break;
+            /* If the above inner loop
+            was not broken at all then
+            arr2[i] is not present in
+            arr1[] */
+            if (j == m)
+                return false;
+        }
+        /* If we reach here then all
+        elements of arr2[] are present
+        in arr1[] */
+        return true;
     }
 
 
