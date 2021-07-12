@@ -517,13 +517,13 @@ public class MethodUtils {
 
 
 
-    public static boolean matrixMethod(char[][] arr, String firstWord, String secondWord) {
+    public static boolean matrixMethod(char[][] matrix, String firstWord, String secondWord) {
         String horizontal = "";
         String vertical = "";
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
-                horizontal += "" + arr[i][j];
-                vertical += "" + arr[j][i];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                horizontal += "" + matrix[i][j];
+                vertical += "" + matrix[j][i];
             }
             horizontal = horizontal + " ";
             vertical = vertical + " ";
@@ -536,9 +536,52 @@ public class MethodUtils {
     }
 
 
+    public static void evenAndLessFifty(int[] arr){
+        if (arr.length==0) System.out.println("Array is empty");
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]%2==0 && arr[i]<50) System.out.println(arr[i]);
+        }
+    }
+
+    public static void evenAndLessFifty2(int [] arr){
+        Arrays.stream(arr).filter(a->a%2==0 && a<50).forEach(e->System.out.println(arr[e]));
+    }
+
+    public static int factorialNumber(int num){
+        if(num==1) return 1;
+        return factorialNumber(num-1)*num;
+    }
 
 
-
+    public static String convertPhoneNumberToDigits(String str){
+        // 1-800-XFINITY-->1800578394
+        str=str.replaceAll("[^\\w\\s]","").toLowerCase();
+        Map<String,String> map = new HashMap<>();
+        map.put("abc", "2");
+        map.put("def", "3");
+        map.put("ghi", "4");
+        map.put("jkl", "5");
+        map.put("mno", "6");
+        map.put("pqrs", "7");
+        map.put("tuv", "8");
+        map.put("wxyz", "9");
+        String result="";
+        for(int i=0;i<str.length();i++){
+            boolean isAdded = false;
+            String digit = str.substring(i,i+1);//1
+            for(String m:map.keySet()){
+                if(m.contains(digit)){
+                    result+=map.get(m);
+                    isAdded=true;
+                    break;
+                }
+            }
+            if(!isAdded){
+                result+=digit;
+            }
+        }
+        return result;
+    }
 
     public static int[] twoSumWithMap(int[] numArray, int target) {
         int[] result = new int[2];
