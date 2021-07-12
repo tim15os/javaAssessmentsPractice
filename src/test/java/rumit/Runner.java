@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Runner extends MethodUtils{
+public class Runner{
 
 
     public static void main(String[] args) throws IOException {
@@ -20,7 +20,8 @@ public class Runner extends MethodUtils{
         HashMap<String, Integer> mapa = new HashMap<>();
         List<Integer> list1 = Arrays.asList(3,4,3,5,5,3,4,5,1);
         List<String> List2 = Arrays.asList("a1", "a2", "b1", "c2", "c1");
-        int[]testArray={1,3,5,9,10,15,15,8};
+        int[]testArray = {1,3,5,9,10,15,15,8};
+        int[]testArray2 = {-1,0,6,25,50,51,52};
 
 
         System.out.println("==============");
@@ -32,9 +33,28 @@ public class Runner extends MethodUtils{
         System.out.println(r.getUniqueCharacter11("hackthegame"));
         System.out.println(r.getUniqueCharacter22("hackthegame"));
         System.out.println("==============");
+        System.out.println(factorialNumber(5));
+        r.evenAndLessFifty(testArray2);
+        r.evenAndLessFifty2(testArray2);
 
 
     } // ===================================================== *** ===================================================== //
+
+    public void evenAndLessFifty(int[] arr){
+        if (arr.length==0) System.out.println("Array is empty");
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i]%2==0 && arr[i]<50) System.out.println(arr[i]);
+        }
+    }
+
+    public void evenAndLessFifty2(int [] arr){
+        Arrays.stream(arr).filter(a->a%2==0 && a<50).forEach(e->System.out.println(arr[e]));
+    }
+
+    public static int factorialNumber(int num){
+        if(num==1) return 1;
+        return factorialNumber(num-1)*num;
+    }
 
 
     public int getUniqueCharacter11(String s){
