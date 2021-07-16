@@ -21,6 +21,7 @@ public class Runner{
         List<Integer> list1 = Arrays.asList(3,4,3,5,5,3,4,5,1);
         List<String> List2 = Arrays.asList("a1", "a2", "b1", "c2", "c1");
         int[]testArray = {1,3,5,9,10,15,15,8};
+        int n = testArray.length;
         int[]testArray2 = {-1,0,6,25,50,51,52};
 
 
@@ -33,12 +34,81 @@ public class Runner{
         System.out.println(r.getUniqueCharacter11("hackthegame"));
         System.out.println(r.getUniqueCharacter22("hackthegame"));
         System.out.println("==============");
+        r.fizzBuzz2(25);
+        System.out.println("==============");
         System.out.println(factorialNumber(5));
         r.evenAndLessFifty(testArray2);
         r.evenAndLessFifty2(testArray2);
-
+        System.out.println("==============");
+        System.out.println(r.mostFrequentNumberInTheArray(testArray, n));
+        System.out.println("==============");
+        System.out.println(r.isSelfDividingNumbers(1, 22));
+        System.out.println(r.isSelfDividingNumbers(47, 85));
 
     } // ===================================================== *** ===================================================== //
+
+
+    public List<Integer> isSelfDividingNumbers(int left, int right){
+        /*
+            A self-dividing number is NOT allowed to contain the digit ZERO:
+            Input: left = 1, right = 22;
+            Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
+            Input: left = 47, right = 85;
+            Output: [48,55,66,77]
+         */
+        List<Integer> list = new ArrayList<>();
+        boolean isModule = false;
+        for (int i=left; i<=right; i++) {
+            String str = String.valueOf(i);
+            for (int j=0; j<str.length(); j++) {
+                int temp = Integer.parseInt(str.charAt(j)+"");
+                if(temp == 0){
+                    isModule = false;
+                    break;
+                }else if (i%temp==0){
+                    isModule = true;
+                }else {
+                    isModule = false;
+                    break;
+                }
+            }
+            if (isModule) list.add(i);
+        }
+        return list;
+    }
+
+    public int mostFrequentNumberInTheArray(int arr [], int n){
+        if(arr.length == 0) return -1;
+        Arrays.sort(arr);
+        int max_count = 1;
+        int result = arr[0];
+        int curr_count = 1;
+        for (int i = 1; i < n; i++){
+            if (arr[i] == arr[i - 1]) curr_count++;
+            else{
+                if (curr_count>max_count){
+                    max_count = curr_count;
+                    result= arr[i-1];
+                }
+                curr_count=1;
+            }
+        }
+        if (curr_count>max_count){
+            max_count=curr_count;
+            result= arr[n-1];
+        }
+        return result;
+    }
+
+
+
+    public void fizzBuzz2(int n){
+        for (int i = 0; i <= n; i++) {
+            String result = (i%15 == 0) ? "FizzBuzz" : (i%5 == 0) ? "Fizz" : (i%3 == 0) ? "Buzz" : ""+i;
+            System.out.println(result);
+        }
+    }
+
 
     public void evenAndLessFifty(int[] arr){
         if (arr.length==0) System.out.println("Array is empty");
