@@ -314,6 +314,70 @@ public class MethodUtils {
 // ============================================================ //
 
 
+    public int mostFrequentNumberInTheArray(int arr [], int n){
+        if(arr.length == 0) return -1;
+        Arrays.sort(arr);
+        int max_count = 1;
+        int result = arr[0];
+        int curr_count = 1;
+        for (int i = 1; i < n; i++){
+            if (arr[i] == arr[i - 1]) curr_count++;
+            else{
+                if (curr_count>max_count){
+                    max_count = curr_count;
+                    result= arr[i-1];
+                }
+                curr_count=1;
+            }
+        }
+        if (curr_count>max_count){
+            max_count=curr_count;
+            result= arr[n-1];
+        }
+        return result;
+    }
+
+
+    public static  String firstRepeatedWord(String sentence){
+        sentence = sentence.replaceAll("\\s+", " ");
+        String [] arr = sentence.split(" ");
+        Set<String> set = new LinkedHashSet<>();
+        return Arrays.stream(arr).filter(a->!set.add(a)).findFirst().orElse(null);
+        // OR --->
+        // String result =  Arrays.stream(arr).filter(a->!set.add(a)).findFirst().orElse(null);
+        // if (result==null) return arr[0];
+        // else return result;
+    }
+
+    public static List<Integer> isSelfDividingNumbers(int left, int right){
+        /*
+            A self-dividing number is NOT allowed to contain the digit ZERO:
+            Input: left = 1, right = 22;
+            Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
+            Input: left = 47, right = 85;
+            Output: [48,55,66,77]
+         */
+        List<Integer> list = new ArrayList<>();
+        boolean isModule = false;
+        for (int i=left; i<=right; i++) {
+            String str = String.valueOf(i);
+            for (int j=0; j<str.length(); j++) {
+                int temp = Integer.parseInt(str.charAt(j)+"");
+                if(temp == 0){
+                    isModule = false;
+                    break;
+                }else if (i%temp==0){
+                    isModule = true;
+                }else {
+                    isModule = false;
+                    break;
+                }
+            }
+            if (isModule) list.add(i);
+        }
+        return list;
+    }
+
 
     public static long multiNumbers(long n){
         if(n <= 0) return -1;
@@ -492,6 +556,69 @@ public class MethodUtils {
             }
         }
         return secondMax;
+    }
+
+    public static int secondLargestNumber2(int array[]) {
+        int highest = Integer.MIN_VALUE;
+        int secondHighest = Integer.MIN_VALUE;
+        // Loop over the array
+        for (int i = 0; i < array.length; i++) {
+            // If we've found a new highest number...
+            if (array[i] > highest) {
+                // ...shift the current highest number to second highestisSelfDividingNumbers(int left, int right){
+                secondHighest = highest;
+                // ...and set the new highest.
+                highest = array[i];
+            } else if (array[i] > secondHighest && array[i] != highest)
+                // Just replace the second highest
+                secondHighest = array[i];
+        }
+        return secondHighest;
+    }
+
+
+    public static List<Integer> uniqueIntegersInTheListOfIntegers(List<Integer> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+            list1 = [10,20,10,30,40,40] -> [10,20,30,40]
+        */
+        return inputList.stream().distinct().collect(Collectors.toList());
+    }
+
+
+    public static List<Integer> uniqueIntegersInTheListOfObjects(List<Object> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+             list1 = ["4",8,8,8,"Java","Java",1,10,10,null,"",-1,-1] -> [8,1,10,-1]
+        */
+        List<Integer> listInteger = new ArrayList<>();
+        for (Object obj : inputList ) {
+            if (obj instanceof Integer) listInteger.add((Integer)obj);
+        }
+        return listInteger.stream().distinct().collect(Collectors.toList());
+    }
+
+
+
+
+    public static List<Integer> findIndexesOfMatchingValuesInTheFirstList(List<Integer> firstList, List<Integer> secondList) {
+        /*
+            Find the indices of matching elements in 2 arrays
+            test_list1 = [5, 7, 8, 9, 10, 11]
+            test_list2 = [8, 10, 11]
+        */
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < secondList.size(); i++) {
+            for (int j = 0; j < firstList.size(); j++) {
+                if (secondList.get(i).equals(firstList.get(j))){
+                    resultList.add(j);
+                    break;
+                }
+            }
+        }
+        return resultList;
     }
 
 

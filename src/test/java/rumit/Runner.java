@@ -1,5 +1,6 @@
 package rumit;
 
+import javax.lang.model.type.NullType;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,12 +19,23 @@ public class Runner{
             System.out.println(stopTime - startTime);
         }
         HashMap<String, Integer> mapa = new HashMap<>();
-        List<Integer> list1 = Arrays.asList(3,4,3,5,5,3,4,5,1);
-        List<String> List2 = Arrays.asList("a1", "a2", "b1", "c2", "c1");
+        List<Integer> list11 = Arrays.asList(3,4,3,5,5,3,4,5,1);
+        List<String> List22 = Arrays.asList("a1", "a2", "b1", "c2", "c1");
         int[]testArray = {1,3,5,9,10,15,15,8};
+        int n = testArray.length;
         int[]testArray2 = {-1,0,6,25,50,51,52};
+        int[]testArray3 = {34,52,6,1,53,45,53,8,15};
+        int[]testArray4 = {34,52,6,1,109,566,45,53,8,15};
 
 
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(5, 7, 8, 9, 10, 11));
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(8, 10, 11));
+
+        List<Object> list3 = new ArrayList<>(Arrays.asList("4",8, 8, 8,"Java","Java", 1, 10, 10, null, "", -1, -1));
+        List<Integer> list4 = new ArrayList<>(Arrays.asList(5, 10, 8, 8, 10, 8));
+
+
+        System.out.println(testArray4.length);
         System.out.println("==============");
         System.out.println(r.subInTheNumber3(123,3));
         System.out.println(r.subInTheNumber3(123,2));
@@ -33,12 +45,181 @@ public class Runner{
         System.out.println(r.getUniqueCharacter11("hackthegame"));
         System.out.println(r.getUniqueCharacter22("hackthegame"));
         System.out.println("==============");
+        r.fizzBuzz2(25);
+        System.out.println("==============");
         System.out.println(factorialNumber(5));
         r.evenAndLessFifty(testArray2);
         r.evenAndLessFifty2(testArray2);
-
+        System.out.println("==============");
+        System.out.println(r.mostFrequentNumberInTheArray(testArray, n));
+        System.out.println("==============");
+        System.out.println(r.isSelfDividingNumbers(1, 22));
+        System.out.println(r.isSelfDividingNumbers(47, 85));
+        System.out.println(r.secondLargestNumber(testArray4));
+        System.out.println(r.secondLargestNumber(testArray3));
+        System.out.println(r.secondLargestNumber2(testArray3));
+        System.out.println("==============");
+        System.out.println(r.findIndexesOfMatchingValuesInTheFirstList(list1, list2));
+        System.out.println(r.uniqueIntegersInTheListOfIntegers(list4));
+        System.out.println(r.uniqueIntegersInTheListOfObjects(list3));
+        System.out.println("==============");
 
     } // ===================================================== *** ===================================================== //
+
+
+    public List<Integer> uniqueIntegersInTheListOfIntegers(List<Integer> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+            list1 = [10,20,10,30,40,40] -> [10,20,30,40]
+        */
+        return inputList.stream().distinct().collect(Collectors.toList());
+    }
+
+
+    public List<Integer> uniqueIntegersInTheListOfObjects(List<Object> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+             list1 = ["4",8,8,8,"Java","Java",1,10,10,null,"",-1,-1] -> [8,1,10,-1]
+        */
+        List<Integer> listInteger = new ArrayList<>();
+        for (Object obj : inputList ) {
+            if (obj instanceof Integer) listInteger.add((Integer)obj);
+        }
+        return listInteger.stream().distinct().collect(Collectors.toList());
+    }
+
+
+
+    public List<Integer> findIndexesOfMatchingValuesInTheFirstList(List<Integer> firstList, List<Integer> secondList) {
+        /*
+            Find the indices of matching elements in 2 arrays
+            test_list1 = [5, 7, 8, 9, 10, 11]
+            test_list2 = [8, 10, 11]
+        */
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < secondList.size(); i++) {
+            for (int j = 0; j < firstList.size(); j++) {
+                if (secondList.get(i).equals(firstList.get(j))){
+                    resultList.add(j);
+                    break;
+                }
+            }
+        }
+        return resultList;
+    }
+
+    public static int secondLargestNumber(int array[]) {
+        int highest = Integer.MIN_VALUE;
+        int secondHighest = Integer.MIN_VALUE;
+        // Loop over the array
+        for (int i = 0; i < array.length; i++) {
+            // If we've found a new highest number...
+            if (array[i] > highest) {
+                // ...shift the current highest number to second highest
+                secondHighest = highest;
+                // ...and set the new highest.
+                highest = array[i];
+            } else if (array[i] > secondHighest && array[i] != highest)
+                // Just replace the second highest
+                secondHighest = array[i];
+        }
+        return secondHighest;
+    }
+
+
+
+    public int secondLargestNumber2(int[] arr){
+        if(arr.length==0) return -1;
+        if(arr.length==1) return arr[0];
+        for(int i=0;i<arr.length;i++){
+            boolean switched = false;
+            for(int b=0;b<arr.length-1;b++){
+                if(arr[b]>arr[b+1]){
+                    int temp=arr[b];
+                    arr[b]=arr[b+1];
+                    arr[b+1]=temp;
+                    switched=true;
+                }
+            }
+            if(switched==false){
+                break;
+            }
+        }
+        int secondMax=0;
+        int max=arr[arr.length-1];
+        for(int k=arr.length-1;k>=0;k--){
+            if(arr[k]!=max && arr[k]<max){
+                secondMax=arr[k];
+                break;
+            }
+        }
+        return secondMax;
+    }
+
+
+    public List<Integer> isSelfDividingNumbers(int left, int right){
+        /*
+            A self-dividing number is NOT allowed to contain the digit ZERO:
+            Input: left = 1, right = 22;
+            Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
+            Input: left = 47, right = 85;
+            Output: [48,55,66,77]
+         */
+        List<Integer> list = new ArrayList<>();
+        boolean isModule = false;
+        for (int i=left; i<=right; i++) {
+            String str = String.valueOf(i);
+            for (int j=0; j<str.length(); j++) {
+                int temp = Integer.parseInt(str.charAt(j)+"");
+                if(temp == 0){
+                    isModule = false;
+                    break;
+                }else if (i%temp==0){
+                    isModule = true;
+                }else {
+                    isModule = false;
+                    break;
+                }
+            }
+            if (isModule) list.add(i);
+        }
+        return list;
+    }
+
+    public int mostFrequentNumberInTheArray(int arr [], int n){
+        if(arr.length == 0) return -1;
+        Arrays.sort(arr);
+        int max_count = 1;
+        int result = arr[0];
+        int curr_count = 1;
+        for (int i = 1; i < n; i++){
+            if (arr[i] == arr[i - 1]) curr_count++;
+            else{
+                if (curr_count>max_count){
+                    max_count = curr_count;
+                    result= arr[i-1];
+                }
+                curr_count=1;
+            }
+        }
+        if (curr_count>max_count){
+            max_count=curr_count;
+            result= arr[n-1];
+        }
+        return result;
+    }
+
+
+
+    public void fizzBuzz2(int n){
+        for (int i = 0; i <= n; i++) {
+            String result = (i%15 == 0) ? "FizzBuzz" : (i%5 == 0) ? "Fizz" : (i%3 == 0) ? "Buzz" : ""+i;
+            System.out.println(result);
+        }
+    }
+
 
     public void evenAndLessFifty(int[] arr){
         if (arr.length==0) System.out.println("Array is empty");
