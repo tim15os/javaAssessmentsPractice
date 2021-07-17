@@ -558,6 +558,69 @@ public class MethodUtils {
         return secondMax;
     }
 
+    public static int secondLargestNumber2(int array[]) {
+        int highest = Integer.MIN_VALUE;
+        int secondHighest = Integer.MIN_VALUE;
+        // Loop over the array
+        for (int i = 0; i < array.length; i++) {
+            // If we've found a new highest number...
+            if (array[i] > highest) {
+                // ...shift the current highest number to second highestisSelfDividingNumbers(int left, int right){
+                secondHighest = highest;
+                // ...and set the new highest.
+                highest = array[i];
+            } else if (array[i] > secondHighest && array[i] != highest)
+                // Just replace the second highest
+                secondHighest = array[i];
+        }
+        return secondHighest;
+    }
+
+
+    public static List<Integer> uniqueIntegersInTheListOfIntegers(List<Integer> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+            list1 = [10,20,10,30,40,40] -> [10,20,30,40]
+        */
+        return inputList.stream().distinct().collect(Collectors.toList());
+    }
+
+
+    public static List<Integer> uniqueIntegersInTheListOfObjects(List<Object> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+             list1 = ["4",8,8,8,"Java","Java",1,10,10,null,"",-1,-1] -> [8,1,10,-1]
+        */
+        List<Integer> listInteger = new ArrayList<>();
+        for (Object obj : inputList ) {
+            if (obj instanceof Integer) listInteger.add((Integer)obj);
+        }
+        return listInteger.stream().distinct().collect(Collectors.toList());
+    }
+
+
+
+
+    public static List<Integer> findIndexesOfMatchingValuesInTheFirstList(List<Integer> firstList, List<Integer> secondList) {
+        /*
+            Find the indices of matching elements in 2 arrays
+            test_list1 = [5, 7, 8, 9, 10, 11]
+            test_list2 = [8, 10, 11]
+        */
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 0; i < secondList.size(); i++) {
+            for (int j = 0; j < firstList.size(); j++) {
+                if (secondList.get(i).equals(firstList.get(j))){
+                    resultList.add(j);
+                    break;
+                }
+            }
+        }
+        return resultList;
+    }
+
 
 
 
