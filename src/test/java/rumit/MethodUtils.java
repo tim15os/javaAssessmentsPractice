@@ -351,7 +351,9 @@ public class MethodUtils {
 
     public static List<Integer> isSelfDividingNumbers(int left, int right){
         /*
-            A self-dividing number is NOT allowed to contain the digit ZERO:
+            A self-dividing number is a number that is divisible by every digit it contains.
+            For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+            Also, A self-dividing number is NOT allowed to contain the digit ZERO:
             Input: left = 1, right = 22;
             Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
             Input: left = 47, right = 85;
@@ -601,6 +603,29 @@ public class MethodUtils {
     }
 
 
+    public static List<Integer> uniqueIntegersInTheListOfObjects2(List<Object> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+             list1 = ["4",8,8,8,"Java","Java",1,10,10,null,"",-1,-1] -> [8,1,10,-1]
+        */
+        return inputList.stream().filter(a->a instanceof Integer).distinct().map(e-> (Integer) e).collect(Collectors.toList());
+    }
+
+    public static List<Integer> increaseEachElementWithAddNumber(List<Integer> inputList, int addNumber) {
+        /*
+             list1 = [1,8,2,3,10], 3 -> [3,11,5,6,13]
+        */
+        return inputList.stream().map(a->a+addNumber).collect(Collectors.toList());
+    }
+
+    public static List<Integer> increaseEachElementWithAddNumber2(List<Integer> inputList, int addNumber) {
+        /*
+             list1 = [1,8,2,3,10], 3 -> [3,11,5,6,13]
+        */
+        inputList.replaceAll(a->a+addNumber);
+        return inputList;
+    }
 
 
     public static List<Integer> findIndexesOfMatchingValuesInTheFirstList(List<Integer> firstList, List<Integer> secondList) {

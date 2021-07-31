@@ -26,11 +26,11 @@ public class Money {
         return new Money(one.amount.add(two.amount));
     }
 
-    protected static Money getDifference(Money one, Money two) {
+    public static Money getDifference(Money one, Money two) {
         return new Money(one.amount.subtract(two.amount));
     }
 
-    protected static Integer compare(Money one, Money two) {
+    public static Integer compare(Money one, Money two) {
         return one.amount.compareTo(two.amount);
     }
 
