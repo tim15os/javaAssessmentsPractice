@@ -56,7 +56,7 @@ public class Account {
         for (Transaction transaction : statementToPrint) System.out.println(transaction);
     }
 
-    protected List<Transaction> getFilteredStatement(List<Transaction> statement, TransactionType type, LocalDate date) {
+    public List<Transaction> getFilteredStatement(List<Transaction> statement, TransactionType type, LocalDate date) {
         if (type != null) statement = this.filterStatementByType(statement, type);
         if (date != null) statement = this.filterStatementByDate(statement, date);
         return statement;

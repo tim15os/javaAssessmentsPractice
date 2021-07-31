@@ -1,0 +1,89 @@
+TIMUR DZHIGKAEV
+Software Development Engineer in Test - SDET
+
+Location: Chicago, IL	LinkedIn:  https://www.linkedin.com/in/dzhigkaev
+E-mail:  tim.dzhigkaev@gmail.com	Authorized to work in the US for any employer.
+Cell: +1 (323) *** ****
+
+PROFESSIONAL SUMMARY
+Four years of experience as a Test Automation Engineer, with proven professionalism and hands-on testing skills. Demonstrates strong proficiency in both Manual and Automation Testing of Web-based Software, API, and Databases. Fast learner and creative problem-solver. Quality and detail-oriented.
+- Ability to work and contribute in a fast-paced Software Agile environment where multi-tasking and work/schedule flexibility is required.
+- Profound experience in all phases of the Software Development Life Cycle (SDLC), Software Testing Life Cycle (STLC) and Defect Management Life Cycle with Agile/Scrum and Waterfall methodologies.
+- Updated and tracked user stories and Zephyr test cases using Jira Atlassian and Confluence pages for Business Requirements.
+- Ability to test all three layers of the application (UI/API/Database) in both ways, manually and with automation scripts.
+- Proven ability in designing and creating automation frameworks using Java, Selenium WebDriver, JUnit, TestNG, Appium, Maven, Cucumber, Apache POI, REST Assured library, JDBC library with Page Object Model (POM) design pattern using Page Factory.
+- Highly skilled in writing Scenarios with Gherkin language in Cucumber Framework and implementing step definitions, executing scenarios against Web applications, analyzing reports for UI and Back-end testing.
+- Experience in Java, development by applying different concepts like OOP concepts, reusable methods using Java, and implemented new libraries to a framework.
+- Integrated TestNG for multithread testing, annotations, and assertions in a testing framework.
+- Created positive and negative test cases and END-TO-END Test scenarios and implemented them.
+- Experience in using Continuous Integration tools like Jenkins, running Smoke and Regression jobs in AWS (Amazon Web Services) EC2 virtual machine.
+- Competent in working with software version control systems like GitHub to control automation repository.
+- Ability to write dynamic XPath and CSS selectors for complex Object Identifications in Selenium WebDriver.
+- Create test plans and write/execute tests for backend Java applications and APIs
+- Perform scalability testing of APIs, Services and Big Data pipeline jobs
+- Hands-on experience in Rest API Testing using Rest Assured Library and Java for automation and POSTMAN for manually testing.
+- Automated Serialization and Deserialization scripts and created POJOs.
+- Used data-driven framework and Selenium tool to read the data from excel file using Apache POI and generate the pass/fail in the excel sheet.
+- Hands-on experience in Database Testing, using SQL queries, and conducting Backend testing by executing
+SQL queries and establishing Database connection using JDBC (Java Database Connectivity) to automation suite.
+- Work effectively with the Engineering team to quickly isolate, report & debug issues.
+- Good analytical and communication skills and ability to work independently with minimal supervision and perform as part of a team.
+Education: Northern Ossetian State University named after K.L.Hetagurov  (Mathematics and Computer Science)
+TECHNICAL SKILLS
+
+
+Languages:	JAVA, Python, Gherkin, SQL, HTML, XML, CSS
+Frameworks:	BDD (Behavior Driven Development), TDD (Test Driven Development)
+Automation Testing Tools:	Selenium WebDriver, Selenium Grid, JDBC library, Rest-Assured library, Appium, Cucumber, JUnit, TestNG, Apache POI
+Manual Tools:	Postman, Oracle SQL Developer
+Testing Methodology:	Black-Box, Functional, Regression, Smoke, Positive/Negative Testing
+Other Tools:	CI/CD-Jenkins, Jira, Confluence, Rally, AWS EC2, Google Cloud Platform (Pub/Sub, Dataflow)
+Project Tools/Design:	Maven, POM (Page Object Model)
+Version Control:	GitHub
+Methodologies:	Agile/Scrum, Waterfall
+
+PROFESSIONAL EXPERIENCE
+
+McKesson, San Francisco, CA
+SDET (Software Development Engineer in Test), 03/2019 – present
+
+- Developed and executed test cases based on requirements and wrote test cases for manual and automation purposes using Software Testing Life Cycle (SDLC) with Agile Scrum framework.
+- Participating the Agile ceremonies like Sprint Planning to provide detailed estimates for the Sprint Backlog items, and understand user stories/Requirements, Sprint Grooming, Daily Scrum, and Retrospective Meetings.
+- Designed and developed Test Automation Framework using Java programming language with Selenium WebDriver applying BDD (Behavior Driven Development) with Cucumber, JUnit, Rest-Assured Library, JDBC Library, Maven, and Page Object Model design pattern by using Page Factory.
+- Worked in Agile Scrum environment, attended Daily Scrum, Sprint Planning, Sprint Grooming, Retrospective, and Demo meetings.
+- Worked closely with developers to get immediate resolutions to the defects.
+- Used JIRA for creating test cases bug tracking, issue tracking, and project management.
+- Worked in various types of testing such as Regression Testing, Smoke Testing, Black Box Testing.
+- Successfully performed to develop Cucumber Step Definitions, Features, and Scenarios using Acceptance Criteria on JIRA. Created Test Scenarios in Cucumber using Gherkin language within the feature files.
+- Developed automation scripts for Regression testing and Smoke testing and running them in Jenkins using Amazon Web Services EC2 virtual machine on nightly basis suits and generated comprehensive user-friendly reports.
+- Monitor Jenkins jobs schedule, configure jobs, trigger jobs daily on an hourly basis.
+- Supported deployment in three different environments.
+- Performed UI (User Interface) Automation testing using Selenium WebDriver. Tested the applications for cross-browser and cross-platform compatibility using Selenium Grid.
+- Tested Restful API using Postman for manual, and Java with Rest Assured library and basic Groovy functions for automation. Created and maintained Automated Test Script for API testing.
+- Performed Data Base testing using JDBC with Java programming language and SQL developer to verify whether data on UI and Database were matching.
+- Developed and executed SQL queries to verify the proper insertion, deletion, and updates.
+- Used Maven as a build tool, GitHub as version control.
+- Execute all the test cases and accurately interpret results/defects.
+
+Environment: Java, Agile/Scrum, Selenium WebDriver (JavaScript Executor), Cucumber, JUnit, Rest-Assured Library (Basic Groovy functions), HTML, XML, Apache POI, JIRA, GitHub, REST API, Jenkins, GHERKIN, AWS EC2, Maven, Oracle SQL Developer, JDBC library, BDD, JSON, Regression Testing, Smoke Testing. 
+First American Title, Santa Ana, CA
+Quality Assurance Engineer, 02/2017 – 02/2019
+
+- Worked in an Agile Scrum environment. Developed, maintained, and executed manual test cases based on requirements and use cases, and automated test scripts through Software Development Life Cycle (SDLC) and Software Testing Life Cycle (STLC).
+- Performed various tests such as Smoke, Functional, Positive, Negative, and Regression testing.
+- Worked in Agile Scrum environment, attended Daily Scrum, Sprint Planning, Sprint Grooming, Retrospective, and Demo meetings.
+- Used JIRA for bug tracking, defect tracking, and project management.
+- Interacting with the development and testing teams to improve the overall quality of the software.
+- Involved and exposed to Test Driven Development (Java, Selenium WebDriver, TestNG, Maven, HTTP Client) based on Page Object Model (POM).
+- Designed and developed Test Scenarios, Test Cases, and Test Scripts according to the business requirements and Acceptance Criteria on Jira.
+- Performed Black box, Functional, Regression, Smoke testing with Selenium WebDriver for web-based applications.
+- Executed Manual Testing and Automation Testing of Web-Based application.
+- Elaborated in writing and testing test scripts using Selenium WebDriver and TestNG with Java Object-Oriented Programming Language.
+- Used TestNG for creating Test Suites and running parallel tests.
+- Created Data Driven Framework using TestNG and Apache POI to read the data from excel files.
+- Developed automated test script using Java for API testing using HTTP Client Serializing/Deserializing JSON formatted data and validated with different HTTP status codes.
+- Experience in validating JSON response using JSON Object, Response classes.
+- Performed manual testing using Postman and Swagger UI.
+- Reviewing database test cases according to assigned Requirements to validate reports by retrieving data with complex SQL queries from Oracle Database.
+
+Environment: Agile/Scrum, Java, Jira, SDLC, Maven, GitHub, Jenkins, TDD, POM, Selenium WebDriver, XPath, TestNG, HTTP Client, REST API, Postman, Json/XML, REST API, Oracle SQL, Apache POI, Regression/Smoke Test.

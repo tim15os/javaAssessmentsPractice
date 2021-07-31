@@ -67,6 +67,20 @@ public class Runner{
     } // ===================================================== *** ===================================================== //
 
 
+    public boolean isAnagram(String str1, String str2) {
+        //     1. Checking if both String have same length
+        if (str1.length() != str2.length()) return false;
+        //     2. Create two char Array, and store the String as Char Arrays
+        char[] str1arr = str1.toLowerCase().toCharArray(); // march -> m,a,r,c,h
+        char[] str2arr = str2.toLowerCase().toCharArray(); // charm -> c,h,a,r,m
+        //     3. Sort that Array
+        Arrays.sort(str1arr);
+        Arrays.sort(str2arr);
+        //     4. Check if the two char arrays equals, and return true/false
+        return Arrays.equals(str1arr, str2arr);
+    }
+
+
     public List<Integer> uniqueIntegersInTheListOfIntegers(List<Integer> inputList) {
         /*
             Write a Java code to get list of unique items in a given list,
@@ -90,6 +104,29 @@ public class Runner{
         return listInteger.stream().distinct().collect(Collectors.toList());
     }
 
+    public static List<Integer> uniqueIntegersInTheListOfObjects2(List<Object> inputList) {
+        /*
+            Write a Java code to get list of unique items in a given list,
+            skip if there are any strings and handle them.
+             list1 = ["4",8,8,8,"Java","Java",1,10,10,null,"",-1,-1] -> [8,1,10,-1]
+        */
+        return inputList.stream().filter(a->a instanceof Integer).distinct().map(e-> (Integer) e).collect(Collectors.toList());
+    }
+
+    public static List<Integer> increaseEachElementWithAddNumber(List<Integer> inputList, int addNumber) {
+        /*
+             list1 = [1,8,2,3,10], 3 -> [3,11,5,6,13]
+        */
+        return inputList.stream().map(a->a+addNumber).collect(Collectors.toList());
+    }
+
+    public static List<Integer> increaseEachElementWithAddNumber2(List<Integer> inputList, int addNumber) {
+        /*
+             list1 = [1,8,2,3,10], 3 -> [3,11,5,6,13]
+        */
+        inputList.replaceAll(a->a+addNumber);
+        return inputList;
+    }
 
 
     public List<Integer> findIndexesOfMatchingValuesInTheFirstList(List<Integer> firstList, List<Integer> secondList) {
@@ -161,7 +198,9 @@ public class Runner{
 
     public List<Integer> isSelfDividingNumbers(int left, int right){
         /*
-            A self-dividing number is NOT allowed to contain the digit ZERO:
+            A self-dividing number is a number that is divisible by every digit it contains.
+            For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+            Also, A self-dividing number is NOT allowed to contain the digit ZERO:
             Input: left = 1, right = 22;
             Output: [1,2,3,4,5,6,7,8,9,11,12,15,22]
             Input: left = 47, right = 85;
@@ -170,7 +209,7 @@ public class Runner{
         List<Integer> list = new ArrayList<>();
         boolean isModule = false;
         for (int i=left; i<=right; i++) {
-            String str = String.valueOf(i);
+            String str = String.valueOf(i); // 128
             for (int j=0; j<str.length(); j++) {
                 int temp = Integer.parseInt(str.charAt(j)+"");
                 if(temp == 0){
