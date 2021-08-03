@@ -419,6 +419,10 @@ public class MethodUtils {
         return reverseStr;
     }
 
+    public static boolean stringRotation(String str1, String str2){
+        return (str1.length() == str2.length()) && ((str1 + str1).contains(str2));
+    }
+
 
     public static String questionsMarks(String str) {
         int questionsMarksCount = 0;
@@ -1323,6 +1327,27 @@ public class MethodUtils {
     }
 
 
+    public static String longestSubstringWithoutRepeatingCharacters(String input){
+        HashSet<Character> set = new HashSet<>();
+        String longestOverAll = "";
+        String longestTillNow = "";
+
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (set.contains(c)) {
+                longestTillNow = "";
+                set.clear();
+            }
+            longestTillNow += c;
+            set.add(c);
+            if (longestTillNow.length() > longestOverAll.length()) {
+                longestOverAll = longestTillNow;
+            }
+        }
+        return longestOverAll;
+    }
+
+
 
     public static String wordAppendInTheArray(String[] strings) {
         // wordAppend(["a", "b", "a", "c", "a", "d", "a"]) → "aa"
@@ -1337,6 +1362,34 @@ public class MethodUtils {
             } else mapa.put(key, 1);
         }
         return resultStr;
+    }
+
+    public static int findTheLargestSubstringOfOne(String str) {
+        // Find the largest substring of ones if can delete one zero in any index of the string 01100101100
+        List<Integer> list = new ArrayList<>();
+        int countOfOnes = 0;
+        int innerCount = 0;
+        String strHelper;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '0'){
+                strHelper = str.substring(i+1);
+                for (int j = 0; j < strHelper.length(); j++) {
+                    if (strHelper.charAt(j) == '1'){
+                        innerCount++;
+                    } else {
+                        list.add(innerCount);
+                        innerCount = 0;
+                        break;
+                    }
+                }
+                countOfOnes = 0;
+            } else {
+                countOfOnes ++;
+            }
+        }
+        list.add(countOfOnes);
+        return list.stream().max(Integer::compare).get();
     }
 
 
