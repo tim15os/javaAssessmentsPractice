@@ -69,12 +69,28 @@ public class Runner{
         String input = "substringfindout"; // stringf
         System.out.println(r.longestSubstringWithoutRepeatingCharacters(input));
         System.out.println(r.longestSubstring(input));
+        System.out.println("==============");
+        System.out.println(r.countSocks(Arrays.asList(10, 20, 20, 10, 10, 30, 50, 10, 20)));
+        System.out.println("==============");
 
     } // ===================================================== *** ===================================================== //
 
 
     public boolean stringRotation(String str1, String str2){
         return (str1.length() == str2.length()) && ((str1 + str1).contains(str2));
+    }
+
+    public int countSocks(List<Integer> list){
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (map.containsKey(list.get(i))) map.put(list.get(i),map.get(list.get(i))+1);
+            else map.put(list.get(i),1);
+            if (map.get(list.get(i))%2==0) count++;
+        }
+        System.out.println(map.entrySet());
+        return count;
     }
 
     public String longestSubstring(String inputString) {

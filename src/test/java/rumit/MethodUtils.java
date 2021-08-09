@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class MethodUtils {
 
@@ -781,6 +782,31 @@ public class MethodUtils {
         return "";
     }
 
+    public static Character firstUniqueCharacterInTheString2(String input) {
+        HashMap<Character, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < input.length(); i++) {
+            hashMap.put(input.charAt(i), hashMap.getOrDefault(input.charAt(i), 0) + 1);
+        }
+        for (int z = 0; z < input.length(); z++) {
+            if (hashMap.get(input.charAt(z)) == 1){
+                return input.charAt(z);
+            }
+        }
+        return null;
+    }
+
+    public static boolean isPrimeTraditional(int number) {
+        if(number < 2) return false;
+        for(int i=2; i<number; i++){
+            if(number % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static boolean isPrimeWithLambdaStreamApi(int number) {
+        return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
+    }
+
     public static boolean subInTheNumber(int firstNumber, int target) {
         // === First approach with the Loop ===
         String stringHelper = Integer.toString(firstNumber);
@@ -1128,6 +1154,19 @@ public class MethodUtils {
             else charCountMap.put(c,1);
         }
         return charCountMap;
+    }
+
+
+    public static int countSocks(List<Integer> list){
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (map.containsKey(list.get(i))) map.put(list.get(i),map.get(list.get(i))+1);
+            else map.put(list.get(i),1);
+            if (map.get(list.get(i))%2==0) count++;
+        }
+        System.out.println(map.entrySet());
+        return count;
     }
 
 
