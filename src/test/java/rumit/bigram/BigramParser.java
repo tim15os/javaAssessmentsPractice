@@ -49,10 +49,10 @@ public class BigramParser {
             String[] words = fileText.split("\\s+", -1);
             int wordLength = words.length;
 
-            if (bigramTarget == "" || bigramTarget == null) bigramTarget = "invalid input was provided";
-            for( int i = 1; i < wordLength; i++ ) {
+            if (bigramTarget == ""|| bigramTarget == null) bigramTarget = "invalid input was provided";
+            for(int i = 1; i < wordLength; i++) {
                 bigramTarget = bigramTarget.toLowerCase().replaceAll(" +", " ").trim();
-                if( ! mapa.containsKey(bigramTarget) ) {
+                if(!mapa.containsKey(bigramTarget)) {
                     int frequency = this.getBigramFrequency(fileText, bigramTarget);
                     mapa.put(bigramTarget, frequency);
                 }
@@ -73,13 +73,12 @@ public class BigramParser {
      */
     private int getBigramFrequency(String fullTxt, String bigram) {
         int bigRamFrequency = 0;
-        int lastIndex    = 0;
-        int bigramLength  = bigram.length();
+        int lastIndex = 0;
+        int bigramLength = bigram.length();
 
-        while( lastIndex != -1 ) {
+        while(lastIndex != -1) {
             lastIndex = fullTxt.indexOf(bigram, lastIndex);
-
-            if( lastIndex != -1 ) {
+            if(lastIndex != -1) {
                 bigRamFrequency++;
                 lastIndex += bigramLength;
             }

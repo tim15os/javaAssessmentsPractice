@@ -63,9 +63,128 @@ public class Runner{
         System.out.println(r.uniqueIntegersInTheListOfIntegers(list4));
         System.out.println(r.uniqueIntegersInTheListOfObjects(list3));
         System.out.println("==============");
+        System.out.println(r.findTheLargestSubstringOfOne("01100101100"));
+        System.out.println(r.findTheLargestSubstringOfOne2("01100101100"));
+        System.out.println("==============");
+        String input = "substringfindout"; // stringf
+        System.out.println(r.longestSubstringWithoutRepeatingCharacters(input));
+        System.out.println(r.longestSubstring(input));
+        System.out.println("==============");
+        System.out.println(r.countSocks(Arrays.asList(10, 20, 20, 10, 10, 30, 50, 10, 20)));
+        System.out.println("==============");
 
     } // ===================================================== *** ===================================================== //
 
+
+    public boolean stringRotation(String str1, String str2){
+        return (str1.length() == str2.length()) && ((str1 + str1).contains(str2));
+    }
+
+    public int countSocks(List<Integer> list){
+        Map<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (map.containsKey(list.get(i))) map.put(list.get(i),map.get(list.get(i))+1);
+            else map.put(list.get(i),1);
+            if (map.get(list.get(i))%2==0) count++;
+        }
+        System.out.println(map.entrySet());
+        return count;
+    }
+
+    public String longestSubstring(String inputString) {
+        //String inputString = "javaisgreat0reapdy"; output -> [t, 0, r, e, a, p, d, y];
+        int maxLength = 0;
+        String lorgestSubstring = "";
+        char[] strArray = inputString.toCharArray();
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        if(inputString.length()<1) return inputString;
+        for(int i=0; i < strArray.length; i++ ) {
+            char ch = strArray[i];
+            if(!map.containsKey(ch)) {
+                map.put(ch,i);
+            } else {
+                i = map.get(ch);
+                map.clear();
+            }
+            if(map.size()>=maxLength){
+                maxLength = map.size();
+                lorgestSubstring = map.keySet().toString();
+            }
+        }
+        return lorgestSubstring.replace("[","").replace("]","")
+                .replace(" ","").replace(",","");
+    }
+
+
+        public String longestSubstringWithoutRepeatingCharacters(String input){
+            HashSet<Character> set = new HashSet<>();
+            String longestOverAll = "";
+            String longestTillNow = "";
+
+            for (int i = 0; i < input.length(); i++) {
+                char c = input.charAt(i);
+                if (set.contains(c)) {
+                    longestTillNow = "";
+                    set.clear();
+                }
+                longestTillNow += c;
+                set.add(c);
+                if (longestTillNow.length() > longestOverAll.length()) {
+                    longestOverAll = longestTillNow;
+                }
+            }
+            return longestOverAll;
+        }
+
+
+    public int findTheLargestSubstringOfOne(String str) {
+        // Find the largest substring of ones if can delete one zero in any index of the string 01100101100
+        List<Integer> list = new ArrayList<>();
+        int countOfOnes = 0;
+        int innerCount = 0;
+        String strHelper;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '0'){
+                strHelper = str.substring(i+1);
+                for (int j = 0; j < strHelper.length(); j++) {
+                    if (strHelper.charAt(j) == '1'){
+                        innerCount++;
+                    } else {
+                        list.add(innerCount);
+                        innerCount = 0;
+                        break;
+                    }
+                }
+                countOfOnes = 0;
+            } else {
+                countOfOnes ++;
+            }
+        }
+        list.add(countOfOnes);
+        return list.stream().max(Integer::compare).get();
+    }
+
+    public List<Integer> findTheLargestSubstringOfOne2(String str) {
+        // Find the largest substring of ones if can delete one zero in any index of the string 01100101100
+        List<Integer> result = new ArrayList<>();
+        char curChar = '1';
+        int counter = 0;
+
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == curChar) {
+                counter += 1;
+            } else {
+                result.add(counter);
+                counter = 0;
+                curChar = str.charAt(i);
+            }
+            result.add(counter);
+        }
+        return result;
+    }
 
     public boolean isAnagram(String str1, String str2) {
         //     1. Checking if both String have same length
