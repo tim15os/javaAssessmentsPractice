@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -1431,6 +1432,13 @@ public class MethodUtils {
         return list.stream().max(Integer::compare).get();
     }
 
+    public static Map<String, Integer> startsWithA(List<String> list){
+        Map<String, Integer> map = list.stream()
+                .filter(a->a.toLowerCase().startsWith("a"))
+                .collect(Collectors.toMap(Function.identity(), String::length));
+        return map;
+    }
+
 
 
 
@@ -1628,14 +1636,27 @@ public class MethodUtils {
         return true;
     }
 
+    public static int minNumberInTheArray(int[] array){
+        if (array.length==0) return 0;
+        if (array.length==1) return array[0];
+        return IntStream.of(array).min().getAsInt();
+    }
 
-    public static int maxInList(List<Integer> list) {
+    public static int maxNumberInTheArray(int[] array){
+        if (array.length==0) return 0;
+        if (array.length==1) return array[0];
+        return IntStream.of(array).max().getAsInt();
+    }
+
+    public static int maxIntList(List<Integer> list) {
         return list.stream().max(Integer::compare).get();
     }
 
-    public static int minInList(List<Integer> list) {
+    public static int minIntList(List<Integer> list) {
         return list.stream().min(Integer::compare).get();
     }
+
+    private static int sumIntLestThanTenWithStream(List<Integer> list) { return list.stream().filter(i -> i > 10).mapToInt(i -> i).sum(); }
 
 
 
