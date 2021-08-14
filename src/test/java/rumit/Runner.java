@@ -3,7 +3,10 @@ package rumit;
 import javax.lang.model.type.NullType;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Runner{
 
@@ -72,6 +75,18 @@ public class Runner{
         System.out.println("==============");
         System.out.println(r.countSocks(Arrays.asList(10, 20, 20, 10, 10, 30, 50, 10, 20)));
         System.out.println("==============");
+        Stream<List<String>> namesOriginalList = Stream.of(
+                Arrays.asList("Haji"),
+                Arrays.asList("David", "Nepe"),
+                Arrays.asList("Adam"));
+        // Flat the stream from List<String> to String stream
+        Stream<String> flatStream = namesOriginalList.flatMap(strList -> strList.stream());
+        flatStream.forEach(System.out::println);
+        System.out.println("==============");
+        System.out.println(r.startsWithA(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
+        System.out.println("==============");
+        System.out.println(r.minNumberInTheArray(testArray4));
+        System.out.println(r.maxNumberInTheArray(testArray4));
 
     } // ===================================================== *** ===================================================== //
 
@@ -79,6 +94,27 @@ public class Runner{
     public boolean stringRotation(String str1, String str2){
         return (str1.length() == str2.length()) && ((str1 + str1).contains(str2));
     }
+
+    public int minNumberInTheArray(int[] array){
+        if (array.length==0) return 0;
+        if (array.length==1) return array[0];
+        return IntStream.of(array).min().getAsInt();
+    }
+
+    public int maxNumberInTheArray(int[] array){
+        if (array.length==0) return 0;
+        if (array.length==1) return array[0];
+        return IntStream.of(array).max().getAsInt();
+    }
+
+
+    public Map<String, Integer> startsWithA(List<String> list){
+        Map<String, Integer> map = list.stream()
+                .filter(a->a.toLowerCase().startsWith("a"))
+                .collect(Collectors.toMap(Function.identity(), String::length));
+        return map;
+    }
+
 
     public int countSocks(List<Integer> list){
         Map<Integer, Integer> map = new HashMap<>();
@@ -91,6 +127,7 @@ public class Runner{
         }
         System.out.println(map.entrySet());
         return count;
+
     }
 
     public String longestSubstring(String inputString) {
