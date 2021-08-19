@@ -1193,7 +1193,7 @@ public class MethodUtils {
         }
         return map;
     }
-
+    // regex to replace all non alphanumeric characters java -> value.replaceAll("[^A-Za-z0-9]", "");
     public static Map<String, Integer> countWordsInList(List<String> list){
         Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < list.size(); i++) {
@@ -1212,6 +1212,35 @@ public class MethodUtils {
         return map;
     }
 
+    public static Map<String, Integer>countWordsInList2(List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            Integer count = 1;
+            String tempI = list.get(i).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+            if (!map.containsKey(tempI)) {
+                for (int j = i + 1; j < list.size(); j++) {
+                    String tempJ = list.get(j).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+                    if (tempI.equals(tempJ)) {
+                        count++;
+                    }
+                }
+            } else {
+                continue;
+            }
+            map.put(tempI, count);
+        }
+        return map;
+    }
+
+    public static Map<String, Integer> countWordsInList3 (List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            String tempI = list.get(i).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+            if (!map.containsKey(tempI)) map.put(tempI, map.getOrDefault(tempI, 1));
+            else map.put(tempI, map.get(tempI)+1);
+        }
+        return map;
+    }
 
 
 
@@ -1634,6 +1663,30 @@ public class MethodUtils {
         elements of arr2[] are present
         in arr1[] */
         return true;
+    }
+
+    public static int maximumSumSubArrayAndIndexes(int [] array){
+        int totalSumNumber = 0;
+        int maxPossibleNumber = 0;
+        int endIndex  = 0;
+        int startIndex  = 0;
+        int helper  = 0;
+
+        for(int i = 0; i<array.length; i++){
+            totalSumNumber = totalSumNumber+array[i];
+
+            if(maxPossibleNumber < totalSumNumber){
+                maxPossibleNumber = totalSumNumber;
+                startIndex = helper;
+                endIndex = i;
+            }
+
+            if(totalSumNumber < 0){
+                totalSumNumber = 0;
+                helper = i+1;
+            }
+        }
+        return maxPossibleNumber;
     }
 
     public static int minNumberInTheArray(int[] array){
