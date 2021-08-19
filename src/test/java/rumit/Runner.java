@@ -1,6 +1,5 @@
 package rumit;
 
-import javax.lang.model.type.NullType;
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
@@ -86,10 +85,44 @@ public class Runner{
         System.out.println(r.startsWithA(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
         System.out.println("==============");
         System.out.println(r.minNumberInTheArray(testArray4));
-        System.out.println(r.maxNumberInTheArray(testArray4));
-
+        System.out.println("==============");
+        System.out.println(r.countWordsInList2(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
+        System.out.println(r.countWordsInList2(Arrays.asList("Ad am", "adam ", "Java", "php", "JAVA", "Python", "pIth on")));
+        System.out.println(r.countWordsInList2(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
+        System.out.println("======== OneLoop ======");
+        System.out.println(r.countWordsInList3(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
+        System.out.println(r.countWordsInList3(Arrays.asList("Ad am", "adam ", "Java", "php", "JAVA", "Python", "pIth on")));
+        System.out.println(r.countWordsInList3(Arrays.asList("Adam", "adam", "Java", "php", "js", "Python", "Angular")));
     } // ===================================================== *** ===================================================== //
 
+
+
+    // regex to replace all non alphanumeric characters java -> value.replaceAll("[^A-Za-z0-9]", "");
+    public Map<String, Integer>countWordsInList2(List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            Integer count = 1;
+            String tempI = list.get(i).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+            if (!map.containsKey(tempI)) {
+                for (int j = i + 1; j < list.size(); j++) {
+                    String tempJ = list.get(j).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+                    if (tempI.equals(tempJ)) count++;
+                }
+            } else continue;
+            map.put(tempI, count);
+        }
+        return map;
+    }
+
+    public Map<String, Integer> countWordsInList3 (List<String> list){
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) {
+            String tempI = list.get(i).toLowerCase().replaceAll("\\s","").replaceAll("[^A-Za-z0-9]", "").trim();
+            if (!map.containsKey(tempI)) map.put(tempI, map.getOrDefault(tempI, 1));
+            else map.put(tempI, map.get(tempI)+1);
+        }
+        return map;
+    }
 
     public boolean stringRotation(String str1, String str2){
         return (str1.length() == str2.length()) && ((str1 + str1).contains(str2));
